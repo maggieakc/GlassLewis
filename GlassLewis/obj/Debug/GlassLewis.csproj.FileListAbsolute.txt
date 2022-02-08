@@ -1,1 +1,10 @@
 c:\users\mcasey\onedrive - mcafee\documents\visual studio 2015\Projects\GlassLewis\GlassLewis\bin\Debug\GlassLewis.exe.config
+c:\users\mcasey\onedrive - mcafee\documents\visual studio 2015\Projects\GlassLewis\GlassLewis\bin\Debug\GlassLewis.exe
+c:\users\mcasey\onedrive - mcafee\documents\visual studio 2015\Projects\GlassLewis\GlassLewis\bin\Debug\GlassLewis.pdb
+c:\users\mcasey\onedrive - mcafee\documents\visual studio 2015\Projects\GlassLewis\GlassLewis\bin\Debug\DriverLibrary.dll
+c:\users\mcasey\onedrive - mcafee\documents\visual studio 2015\Projects\GlassLewis\GlassLewis\bin\Debug\WebDriver.dll
+c:\users\mcasey\onedrive - mcafee\documents\visual studio 2015\Projects\GlassLewis\GlassLewis\bin\Debug\SeleniumExtras.WaitHelpers.dll
+c:\users\mcasey\onedrive - mcafee\documents\visual studio 2015\Projects\GlassLewis\GlassLewis\bin\Debug\DriverLibrary.pdb
+c:\users\mcasey\onedrive - mcafee\documents\visual studio 2015\Projects\GlassLewis\GlassLewis\obj\Debug\GlassLewis.csprojResolveAssemblyReference.cache
+c:\users\mcasey\onedrive - mcafee\documents\visual studio 2015\Projects\GlassLewis\GlassLewis\obj\Debug\GlassLewis.exe
+c:\users\mcasey\onedrive - mcafee\documents\visual studio 2015\Projects\GlassLewis\GlassLewis\obj\Debug\GlassLewis.pdb
