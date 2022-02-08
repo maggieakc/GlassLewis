@@ -1,4 +1,5 @@
 ﻿using DriverLibrary;
+using System;
 
 namespace GlassLewis
 {
@@ -16,7 +17,8 @@ namespace GlassLewis
             Global.driver.GoToUrl(Global.url);
             Global.driver.WaitForElementToLoadById(PageObjectModel.countryFilter);
             VerifyBelgiumFilterIsPresent();
-
+            ClickBelgiumFilter();
+            ResetBelgiumFilter();
             //Closing the report
             Global.report.EndReport();
 
@@ -46,24 +48,56 @@ namespace GlassLewis
             Global.report.AddTestCaseToReport(test);
         }
 
-        /// <summary>
-        /// When the page loads buttons should be present
-        /// </summary>
+
         public static void ClickBelgiumFilter()
         {
             //Creating a test case object to store the details of each test
-            TestCase test = new TestCase("Verify filter for Belgium has loaded", "Page should load and belgium checkbox should be present");
+            TestCase test = new TestCase("Verify filter for Belgium works", "The only items in the list have the value Belgium in the Country cell");
             Global.driver.ClickElementByID(PageObjectModel.belgiumCheckbox);
-            Global.driver.ClickElementByID(PageObjectModel.updateButton, "Filtered By Country Belgium", arrayIndex: 2);
+            Global.driver.ClickElementByClass("header");
+            Global.driver.PressDownArrow();
+            Global.driver.ClickElementByID(PageObjectModel.updateButton, "Filtered By Country Belgium", arrayIndex: 1);
+            
+            for(int i=0; i<Global.driver.GetRowCount(); i++)
+            {
+                if(!Global.driver.GetCellContentByRowAndColumn(i).Equals("Belgium"))
+                {
+                    test.SetActualOutcome("List was not properly filtered");
+                    test.SetTestResult(false);
+                }
+                else
+                {
+                    test.SetActualOutcome("The list was properly filtered");
+                    test.SetTestResult(true);
+                }
+            }
+            Global.report.AddTestCaseToReport(test);
+        }
 
-            test.SetActualOutcome("Page has loaded and checkbox is present");
-            //test.SetTestResult(true);
-            //}
-            //else
-            //{
-            //    test.SetActualOutcome("Checkbox is not present or the id has changed. Page may not have loaded properly");
-            //    test.SetTestResult(false);
-            //}
+
+        public static void ResetBelgiumFilter()
+        {
+            //Creating a test case object to store the details of each test
+            TestCase test = new TestCase("Verify resetting filter for Belgium works", "The filter should be resest");
+            Global.driver.ClickElementByID(PageObjectModel.belgiumCheckbox);
+            Global.driver.ClickElementByClass("header");
+            Global.driver.PressDownArrow();
+            Global.driver.ClickElementByID(PageObjectModel.resetButton, "Filtered By Country Belgium Reset", arrayIndex: 1);
+            
+            for (int i = 0; i < Global.driver.GetRowCount(); i++)
+            {
+                if (!Global.driver.GetCellContentByRowAndColumn(i).Equals("Belgium"))
+                {
+                    test.SetActualOutcome("The list was properly reset");
+                    test.SetTestResult(true);
+                }
+                else
+                {
+                   
+                    test.SetActualOutcome("List was not properly reset");
+                    test.SetTestResult(false);
+                }
+            }
             Global.report.AddTestCaseToReport(test);
         }
 
