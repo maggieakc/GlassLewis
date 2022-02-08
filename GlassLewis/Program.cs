@@ -19,6 +19,9 @@ namespace GlassLewis
             VerifyBelgiumFilterIsPresent();
             ClickBelgiumFilter();
             ResetBelgiumFilter();
+
+            VerifySearchBoxIsPresent();
+            SearchForActivisionBlizzard();
             //Closing the report
             Global.report.EndReport();
 
@@ -26,10 +29,6 @@ namespace GlassLewis
             Global.driver.TearDown();
         }
 
-
-        /// <summary>
-        /// When the page loads buttons should be present
-        /// </summary>
         public static void VerifyBelgiumFilterIsPresent()
         {
             //Creating a test case object to store the details of each test
@@ -47,7 +46,6 @@ namespace GlassLewis
             }
             Global.report.AddTestCaseToReport(test);
         }
-
 
         public static void ClickBelgiumFilter()
         {
@@ -100,6 +98,44 @@ namespace GlassLewis
             }
             Global.report.AddTestCaseToReport(test);
         }
+
+        public static void VerifySearchBoxIsPresent()
+        {
+            //Creating a test case object to store the details of each test
+            TestCase test = new TestCase("Verify search comboBox has loaded", "Page should load and search box should be present");
+            if (Global.driver.IsElementPresentByID(PageObjectModel.searchComboBox))
+            {
+                test.SetActualOutcome("Page has loaded and search box is present");
+                test.SetTestResult(true);
+            }
+            else
+            {
+                test.SetActualOutcome("Search box is not present or the id has changed. Page may not have loaded properly");
+                test.SetTestResult(false);
+            }
+            Global.report.AddTestCaseToReport(test);
+        }
+
+        public static void SearchForActivisionBlizzard()
+        {
+            //Creating a test case object to store the details of each test
+            TestCase test = new TestCase("Verify search comboBox works", "Search box should work as expected");
+            Global.driver.SendKeysToElementByID(PageObjectModel.searchComboBox, "Activision Blizzard Inc", "Search for Activision Blizzard Inc");
+            Global.driver.PressDownArrow();
+
+            if (Global.driver.GetTextFromElementByID(PageObjectModel.issuerName).Equals("Activision Blizzard Inc"))
+            {
+                test.SetActualOutcome("Search for Activision Blizzard Inc was successful");
+                test.SetTestResult(true);
+            }
+            else
+            {
+                test.SetActualOutcome("Search for Activision Blizzard Inc was not successful");
+                test.SetTestResult(false);
+            }
+            Global.report.AddTestCaseToReport(test);
+        }
+
 
     }
 }
