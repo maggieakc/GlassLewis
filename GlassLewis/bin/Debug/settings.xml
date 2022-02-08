@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+ <Environment>
+    <Setting Value="https://ui-epp0.preprod.mvision.mcafee.com/core" Name="PBC Url" />
+	<Setting Value="Chrome" Name="Browser" />
+ </Environment>
+</Configuration>

@@ -18,6 +18,9 @@ namespace GlassLewis
         {
             //Set the Global variable MVisionUrl using configuration file value - value is called PBC Url in the configuration file due to a bug in Akeso
             Global.Url = getStringSetting("Environment", "Url");
+            //Set the Global variable Browser using configuration file value 
+            Global.Browser = getStringSetting("Environment", "Browser");
+
         }
 
         /// <summary>
